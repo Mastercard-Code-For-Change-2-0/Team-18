@@ -2,8 +2,10 @@
 
 import { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export default function RegistrationPage() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,6 +27,7 @@ export default function RegistrationPage() {
       const res = await axios.post("http://localhost:5000/api/users/register", formData)
       alert("✅ " + res.data.message)
       console.log("Registered user:", res.data.user)
+      navigate('/student');
     } catch (err) {
       console.error(err)
       alert("❌ " + (err.response?.data?.message || "Something went wrong"))

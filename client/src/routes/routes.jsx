@@ -9,6 +9,7 @@ import BulkUpload from "../components/BulkUpload";
 import Clerk from "../pages/Clerk"
 import Registration from "../pages/Registration";
 import Login from "../pages/Login"
+import WelcomePage from "../components/studentWelcome";
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
 	{
 		path: "/login",
 		element: <Login />
+	}
+	,{
+		path:'/student',
+		element:<WelcomePage/>
 	}
 	// {
 	// 	path: "shop",
