@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoutes from "./routes/user.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 import path from "path";
 
 // Load environment variables
@@ -15,7 +16,7 @@ app.use(express.json()); // Parse JSON bodies
 
 // Routes
 app.use("/api/users", userRoutes);
-
+app.use("/api/admins", adminRoutes);
 // Database Connection
 mongoose
     .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
