@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import AdminBulkUpload from "../components/AdminBulkUpload";
+import BulkUpload from "../components/BulkUpload";
 import SideBar from "../components/SideBar";
 
 const Admin = () => {
@@ -13,7 +13,7 @@ const Admin = () => {
 
 				{/* Main Content */}
 				<main className="flex-1 px-6 py-10 bg-gray-50">
-					<AdminBulkUpload />
+					<BulkUpload />
 				</main>
 			</div>
 			<Footer />
