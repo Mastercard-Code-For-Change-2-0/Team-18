@@ -3,11 +3,11 @@ import Admin from "../pages/Admin";
 import Home from "../pages/Home";
 
 
-import AdminDashboard from "../components/AdminDashBoard";
+import AdminDashboard from "../components/AdminDashboard";
 import StudentDetails from "../components/StudentDetails";
 import BulkUpload from "../components/BulkUpload";
 import Clerk from "../pages/Clerk"
-import Registration from "../pages/Registration";
+// import Registration from "../pages/Registration";
 
 
 const router = createBrowserRouter([
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/admin",
-		element: <Admin />
+		element: <AdminDashboard />
 	},
 	{
 		path: "/clerk",
@@ -32,10 +32,10 @@ const router = createBrowserRouter([
 		path: "/clerk/bulk-upload",
 		element: <BulkUpload />
 	},
-	{
-		path: "/register",
-		element: <Registration />
-	}
+	// {
+	// 	path: "/register",
+	// 	element: <Registration />
+	// },
 	{
 		path: "/admin-dashboard",
 		element: <AdminDashboard />
@@ -43,11 +43,6 @@ const router = createBrowserRouter([
 	{
 		path: "/student/:name",
 		element: <StudentDetails />
-	}
-	,
-	{
-
-
 	}
 	// {
 	// 	path: "shop",
