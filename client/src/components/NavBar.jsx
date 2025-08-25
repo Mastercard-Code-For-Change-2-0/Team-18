@@ -6,9 +6,9 @@ const NavBar = () => {
 			<p className="text-3xl font-extrabold font-[integralCF]">Y4D Foundation</p>
 			<div>
 				<NavLink name="Home" />
-				<NavLink name="Shop" />
-				<NavLink name="New Arrivals" />
-				<NavLink name="Brands" />
+				<NavLink name="About Us" />
+				<NavLink name="Contact Us" />
+				<NavLink name="Donate" />
 			</div>
 		</nav>
 	)
