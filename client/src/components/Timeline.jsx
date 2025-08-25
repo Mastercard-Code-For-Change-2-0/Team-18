@@ -236,20 +236,18 @@ export default function Timeline({ courses }) {
 
                 {/* Course Box (smaller) */}
                 <div
-                  className={`absolute w-40 p-2 bg-white border shadow-md rounded-md text-sm ${
-                    isUp ? "-top-24" : "top-12"
-                  } left-1/2 -translate-x-1/2`}
+                  className={`absolute w-40 p-2 bg-white border shadow-md rounded-md text-sm ${isUp ? "-top-24" : "top-12"
+                    } left-1/2 -translate-x-1/2`}
                 >
                   <p className="font-bold text-blue-700 text-base">{year}</p>
                   <p className="text-gray-700">{item.course}</p>
 
                   {/* Arrow */}
                   <div
-                    className={`absolute left-1/2 -translate-x-1/2 border-6 ${
-                      isUp
-                        ? "border-b-0 border-x-transparent border-t-blue-600 top-full"
-                        : "border-t-0 border-x-transparent border-b-blue-600 -top-3"
-                    }`}
+                    className={`absolute left-1/2 -translate-x-1/2 border-6 ${isUp
+                      ? "border-b-0 border-x-transparent border-t-blue-600 top-full"
+                      : "border-t-0 border-x-transparent border-b-blue-600 -top-3"
+                      }`}
                   ></div>
                 </div>
               </div>
