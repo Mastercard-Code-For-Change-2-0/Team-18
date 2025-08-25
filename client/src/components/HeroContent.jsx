@@ -4,13 +4,13 @@ import { Link } from "react-router-dom"
 export default function HeroContent() {
 	return (
 		<div className="flex flex-col justify-center h-full px-6 md:px-12 lg:px-20">
-			<div className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight space-y-2">
+			<div className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight space-y-2 font-bold">
 				<h1>Empowering Youth</h1>
 				<h1>Transforming Lives</h1>
 				<h1>Building Futures</h1>
 			</div>
 
-			<p className="mt-6 text-gray-600 max-w-xl text-base md:text-lg leading-relaxed">
+			<p className="mt-8 text-gray-600 max-w-xl text-base md:text-lg leading-relaxed">
 				Y4D Foundation is a youth-led organization working on empowering the underprivileged section of our society.
 			</p>
 

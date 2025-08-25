@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Upload, X } from "lucide-react";
 import * as XLSX from "xlsx";
 
-export default function AdminBulkUpload() {
+
+export default function BulkUpload() {
   const [file, setFile] = useState(null);
   const [students, setStudents] = useState([]);
   const [error, setError] = useState("");
   const [dragActive, setDragActive] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
     const uploadedFile = e.target.files[0];
@@ -22,13 +24,12 @@ export default function AdminBulkUpload() {
 
   const processFile = (uploadedFile) => {
     const validTypes = [
-      "text/csv",
-      "application/vnd.ms-excel",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "application/vnd.ms-excel", // .xls
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xlsx
     ];
 
     if (!validTypes.includes(uploadedFile.type)) {
-      setError("❌ Invalid file format. Please upload CSV or Excel file.");
+      setError("❌ Invalid file format. Please upload .xls or .xlsx file.");
       return;
     }
 
@@ -38,7 +39,7 @@ export default function AdminBulkUpload() {
     const reader = new FileReader();
     reader.onload = (event) => {
       const data = new Uint8Array(event.target.result);
-      const workbook = XLSX.read(data, { type: "array" });
+      const workbook = XLSX.read(data, { type: "array" }); // use imported XLSX
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
       const parsedData = XLSX.utils.sheet_to_json(sheet);
@@ -47,20 +48,44 @@ export default function AdminBulkUpload() {
     reader.readAsArrayBuffer(uploadedFile);
   };
 
+
   const handleClear = () => {
     setFile(null);
     setStudents([]);
     setError("");
   };
 
-  const handleUpload = () => {
-    if (students.length === 0) {
-      alert("No student data to upload.");
+  const handleUpload = async () => {
+    if (!file) {
+      alert("Please select a file first.");
       return;
     }
-    console.log("Uploading students:", students);
-    alert("✅ Students uploaded successfully!");
-    handleClear();
+
+    try {
+      setLoading(true);
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const res = await fetch("http://localhost:5000/api/students/bulk-upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        throw new Error("Upload failed. Please try again.");
+      }
+
+      const data = await res.json();
+      console.log("✅ Upload successful:", data);
+
+      alert("✅ Students uploaded successfully!");
+      handleClear();
+    } catch (err) {
+      console.error(err);
+      alert("❌ Error uploading file: " + err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -85,19 +110,19 @@ export default function AdminBulkUpload() {
         >
           <Upload className="mx-auto mb-4 text-gray-400" size={50} />
           <p className="text-gray-600 font-medium">
-            Drag & drop your CSV/Excel file here or
+            Drag & drop your Excel file here or
           </p>
           <label className="mt-4 inline-block bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg cursor-pointer hover:bg-blue-700 transition">
             Browse Files
             <input
               type="file"
-              accept=".csv,.xlsx,.xls"
+              accept=".xls,.xlsx"
               className="hidden"
               onChange={handleFileChange}
             />
           </label>
           <p className="text-xs text-gray-500 mt-3">
-            Supported formats: <span className="font-medium">.csv, .xlsx, .xls</span>
+            Supported formats: <span className="font-medium">.xls, .xlsx</span>
           </p>
         </div>
 
@@ -162,16 +187,20 @@ export default function AdminBulkUpload() {
         {/* Buttons */}
         <div className="mt-8 flex justify-center gap-6">
           <button
-            className="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg shadow hover:bg-blue-700 disabled:opacity-50 transition"
+            className="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg shadow hover:bg-blue-700 disabled:opacity-50 transition flex items-center justify-center gap-2"
             onClick={handleUpload}
-            disabled={!file}
+            disabled={!file || loading}
           >
-            Upload File
+            {loading ? (
+              <span className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></span>
+            ) : (
+              "Upload File"
+            )}
           </button>
           <button
             className="bg-gray-200 font-medium px-6 py-2.5 rounded-lg shadow hover:bg-gray-300 disabled:opacity-50 transition"
             onClick={handleClear}
-            disabled={!file}
+            disabled={!file || loading}
           >
             Clear Selection
           </button>

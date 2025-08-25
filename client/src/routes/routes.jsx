@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 
 import AdminDashboard from "../components/AdminDashBoard";
 import StudentDetails from "../components/StudentDetails";
+import BulkUpload from "../components/BulkUpload";
+import Clerk from "../pages/Clerk"
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -12,8 +14,20 @@ const router = createBrowserRouter([
 		// errorElement: <NotFound />,
 	},
 	{
-		  path:"/admin/bulk-upload",
-		  element:<Admin/>
+		path: "/admin/bulk-upload",
+		element: <BulkUpload />
+	},
+	{
+		path: "/admin",
+		element: <Admin />
+	},
+	{
+		path: "/clerk",
+		element: <Clerk />
+	},
+	{
+		path: "/clerk/bulk-upload",
+		element: <BulkUpload />
 	},
 	{
 		  path:"/admin-dashboard",
