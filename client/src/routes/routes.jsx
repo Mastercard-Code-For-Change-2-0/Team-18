@@ -8,6 +8,7 @@ import StudentDetails from "../components/StudentDetails";
 import BulkUpload from "../components/BulkUpload";
 import Clerk from "../pages/Clerk"
 import Registration from "../pages/Registration";
+import Login from "../pages/Login"
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
 	{
 		path: "/student/:name",
 		element: <StudentDetails />
+	},
+	{
+		path: "/login",
+		element: <Login />
 	}
 	// {
 	// 	path: "shop",
