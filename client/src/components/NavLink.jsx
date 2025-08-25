@@ -1,23 +1,29 @@
+// NavLink.jsx
 import { Link } from "react-router-dom";
+
 export default function NavLink({ name, unlock }) {
-
 	let to;
+	switch (name) {
+		case "Register":
+			to = "/register";
+			break;
+		case "Login":
+			to = "/login";
+			break;
+		default:
+			to = "/";
+	}
 
-	if (name === "Register") to = "/register";
-	else if (name === "") to = "/login";
-	else to = '/';
-
-	return (
-		unlock === "true" ?
-			// <span className="p-3 font-medium text-[17px] text-gray-900">
-			// 	{name}
-			// </span>
-			<Link to={to} className="p-3 font-medium text-[17px] hover:text-blue-500 transition">
-				{name}
-			</Link>
-			:
-			<span className="p-3 font-medium text-[17px] text-gray-400 cursor-not-allowed">
-				{name}
-			</span>
+	return unlock === "true" ? (
+		<Link
+			to={to}
+			className="p-3 font-medium text-[17px] text-orange-600 hover:text-orange-600 transition-colors"
+		>
+			{name}
+		</Link>
+	) : (
+		<span className="p-3 font-medium text-[17px] text-orange-900 cursor-not-allowed">
+			{name}
+		</span>
 	);
 }
