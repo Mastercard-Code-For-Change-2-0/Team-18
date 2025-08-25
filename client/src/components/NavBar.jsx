@@ -7,9 +7,9 @@ const NavBar = () => {
 			<p className="text-3xl font-extrabold">Y4D Foundation</p>
 			<div className="flex flex-col md:flex-row gap-2">
 				<NavLink name="Home" unlock="true" />
-				<NavLink name="About Us" unlock="true" />
-				<NavLink name="Contact Us" unlock="true" />
-				<NavLink name="Donate" unlock="true" />
+				<NavLink name="About Us" />
+				<NavLink name="Contact Us" />
+				<NavLink name="Donate" />
 				<NavLink name="Register" unlock="true" />
 				<NavLink name="Login" unlock="true" />
 			</div>

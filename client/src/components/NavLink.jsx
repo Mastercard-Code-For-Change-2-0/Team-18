@@ -17,12 +17,12 @@ export default function NavLink({ name, unlock }) {
 	return unlock === "true" ? (
 		<Link
 			to={to}
-			className="p-3 font-medium text-[17px] text-orange-800 hover:text-orange-600 transition-colors"
+			className="p-3 font-medium text-[17px] text-orange-600 hover:text-orange-600 transition-colors"
 		>
 			{name}
 		</Link>
 	) : (
-		<span className="p-3 font-medium text-[17px] text-orange-300 cursor-not-allowed">
+		<span className="p-3 font-medium text-[17px] text-orange-900 cursor-not-allowed">
 			{name}
 		</span>
 	);
