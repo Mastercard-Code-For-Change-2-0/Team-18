@@ -1,6 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Admin from "../pages/Admin";
 import Home from "../pages/Home";
+
+
+import AdminDashboard from "../components/AdminDashBoard";
+import StudentDetails from "../components/StudentDetails";
 import BulkUpload from "../components/BulkUpload";
 import Clerk from "../pages/Clerk"
 import Registration from "../pages/Registration";
@@ -31,6 +35,19 @@ const router = createBrowserRouter([
 	{
 		path: "/register",
 		element: <Registration />
+	}
+	{
+		path: "/admin-dashboard",
+		element: <AdminDashboard />
+	},
+	{
+		path: "/student/:name",
+		element: <StudentDetails />
+	}
+	,
+	{
+
+
 	}
 	// {
 	// 	path: "shop",
