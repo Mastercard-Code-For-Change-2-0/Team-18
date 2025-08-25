@@ -4,14 +4,14 @@ import { Instagram, Linkedin, Github, Facebook } from "lucide-react";
 
 export default function Footer() {
 	return (
-		<footer className="bg-orange-50 text-orange-900 px-6 md:px-20 pt-12 pb-6 border-t border-orange-200">
+		<footer className="bg-orange-50 px-6 md:px-20 pt-12 pb-6 border-t border-orange-200">
 			<div className="flex flex-col md:flex-row justify-between gap-10">
 				{/* Left Side: Brand Info */}
 				<div className="max-w-md">
-					<h2 className="text-3xl md:text-4xl font-extrabold text-orange-700">
+					<h2 className="text-3xl md:text-4xl font-extrabold">
 						Y4D Foundation
 					</h2>
-					<p className="pt-4 text-orange-800 leading-relaxed text-sm md:text-base">
+					<p className="pt-4 leading-relaxed text-sm md:text-base">
 						Y4D Foundation is a youth-led organization working on empowering the
 						underprivileged section of our society. Y4D has a pan-India presence
 						through its wide network of Volunteer Chapters across the country.
@@ -65,7 +65,7 @@ export default function Footer() {
 			</div>
 
 			{/* Bottom */}
-			<div className="text-center pt-10 text-xs md:text-sm text-orange-500">
+			<div className="text-center pt-10 text-xs md:text-sm">
 				© 2025 Y4D Foundation. All Rights Reserved.
 			</div>
 		</footer>

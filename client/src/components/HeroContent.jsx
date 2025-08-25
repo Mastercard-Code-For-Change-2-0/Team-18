@@ -6,13 +6,13 @@ export default function HeroContent() {
 		<div className="flex flex-col justify-center h-full px-6 md:px-12 lg:px-24 py-12 max-w-5xl">
 			{/* Heading */}
 			<div className="space-y-3 md:space-y-4">
-				<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-orange-700 leading-snug md:leading-tight">
+				<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug md:leading-tight">
 					Empowering Youth
 				</h1>
-				<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-orange-600 leading-snug md:leading-tight">
+				<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug md:leading-tight">
 					Transforming Lives
 				</h1>
-				<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-orange-500 leading-snug md:leading-tight">
+				<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-snug md:leading-tight">
 					Building Futures
 				</h1>
 			</div>

@@ -25,7 +25,7 @@ export default function RegistrationPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-white to-orange-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-10 px-5 md:p-10">
         {/* Header */}
         <div className="text-center mb-8">
@@ -110,7 +110,7 @@ export default function RegistrationPage() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl text-lg transition-all shadow-md hover:shadow-lg"
+            className="w-full bg-orange-600 text-white font-semibold py-3 rounded-xl text-lg transition-all shadow-md hover:shadow-lg"
           >
             Submit
           </button>
