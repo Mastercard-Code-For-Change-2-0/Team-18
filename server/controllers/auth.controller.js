@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken'
-import userModel from '../models/user.models.js';
+import userModel from '../models/user.model.js'; 
 import bcrypt from 'bcrypt';
 import transporter from '../config/nodemailer.js';
 
 export const RegisterUser = async (req,res)=>{
-    const {name,email,password, linkedinId} = req.body; 
+    const {name,email,password, linkedinId,role} = req.body; 
 
     if(!name || !email || !password || !linkedinId){
         return res.status(400).json({success: false, message:"Missing credentials"})
@@ -20,7 +20,8 @@ export const RegisterUser = async (req,res)=>{
             name,
             email,
             password: hashedPassword,
-            linkedinId
+            linkedinId,
+            role
         });
         await user.save();
 

@@ -1,48 +1,16 @@
-// <<<<<<< HEAD
-// import express from "express";
-// import { deleteUser, uploadStudentExcel, createUser, createAdmin, processLinkedInExcel } from "../controllers/user.controller.js";
-// import authorizeRoles from "../middlewares/authorizeRoles.js";
-// import multer from "multer";
+import express from 'express';
+import { isAuthenticated, RegisterUser, resetPassword, sendOtp, sendResetOtp, userLogin, userLogout, verifyEmail } from '../controllers/auth.controller.js';
+import userAuth from '../middleware/auth.middleware.js';
 
-import {Router} from "express";
-import {
-    registerUser,
-    loginUser,
-    logoutUser,
-    refreshAccessToken,
-    changeCurrentPassword,
-    updateAccountDetails,
-    getCurrentUser,
-    updateUserAvatar,
-    updateUserCoverImage} from "../controllers/user.controller.js";
-import { upload } from "../middlewares/multer.middleware.js";
-import { verifyJWT} from "../middlewares/auth.middleware.js"
-//>>>>>>> 02cf8b7b0024d4be512cc9b56113bc09b0275969
+const authRouter = express.Router();
 
+authRouter.post('/register',RegisterUser);
+authRouter.post('/login',userLogin);
+authRouter.post('/logout',userLogout);
+authRouter.post('/send-verify-otp',userAuth,sendOtp);
+authRouter.post('/verify-mail',userAuth,verifyEmail);
+authRouter.get('/is-auth',userAuth,isAuthenticated);
+authRouter.post('/send-reset-otp',sendResetOtp);
+authRouter.post('/reset-password',resetPassword);
 
-
-const router = Router()
-
-router
-.route("/register").post(
-    upload.fields([
-        {
-            name: "avatar",
-            maxCount: "1"
-        },
-        {
-            name: "coverImage",
-            maxCount: 2
-        }
-    ]),
-    registerUser)
-
-router
-.route("/login").post(loginUser)
-//secured routes
-
-
-// Upload LinkedIn Excel file and process data
-router.post("/upload-linkedin-excel", upload.single("file"), processLinkedInExcel);
-
-export default router;
+export default authRouter;
