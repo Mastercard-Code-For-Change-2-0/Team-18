@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import RegistrationPage from "../components/RegistrationPage"
 
 const Registration = () => {
 	return (
@@ -8,7 +9,7 @@ const Registration = () => {
 			<div className="min-h-screen px-6 py-10">
 
 				Registration dashboard
-                <RegistrationPage/>
+				<RegistrationPage />
 			</div>
 			<Footer />
 		</>
