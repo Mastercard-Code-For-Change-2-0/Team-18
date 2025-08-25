@@ -1,8 +1,15 @@
 // src/components/SideBar.jsx
-import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Upload, Bell } from "lucide-react"; // optional icons
+import { NavLink, useNavigate } from "react-router-dom"; 
+import { LayoutDashboard, Upload } from "lucide-react"; // optional icons
 
 const SideBar = () => {
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		navigate("/login"); // ✅ Correct way
+	};
+
 	return (
 		<div className="w-60 min-h-screen bg-white shadow-md flex flex-col justify-between">
 			<div>
@@ -34,14 +41,15 @@ const SideBar = () => {
 						<Upload size={18} />
 						Bulk Upload
 					</NavLink>
-
-					
 				</nav>
 			</div>
 
 			{/* Footer Links */}
 			<div className="p-4 border-t">
-				<button className="w-full text-left px-4 py-2 hover:bg-gray-100">
+				<button
+					className="w-full text-left px-4 py-2 hover:bg-gray-100"
+					onClick={handleLogout}
+				>
 					Logout
 				</button>
 			</div>

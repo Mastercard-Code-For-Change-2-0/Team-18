@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 export default function NavLink({ name, unlock }) {
 	let to;
 	switch (name) {
-		case "Register":
+		case "SignUp":
 			to = "/register";
 			break;
-		case "Login":
+		case "SignIn":
 			to = "/login";
 			break;
 		default:
