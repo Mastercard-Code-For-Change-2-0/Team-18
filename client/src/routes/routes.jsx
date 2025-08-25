@@ -3,6 +3,9 @@ import Admin from "../pages/Admin";
 import Home from "../pages/Home";
 import BulkUpload from "../components/BulkUpload";
 import Clerk from "../pages/Clerk"
+import Registration from "../pages/Registration";
+
+
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -25,6 +28,10 @@ const router = createBrowserRouter([
 		path: "/clerk/bulk-upload",
 		element: <BulkUpload />
 	},
+	{
+		path: "/register",
+		element: <Registration />
+	}
 	// {
 	// 	path: "shop",
 	// 	element: <Shop />,
