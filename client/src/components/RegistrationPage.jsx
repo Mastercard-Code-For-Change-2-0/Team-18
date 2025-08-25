@@ -21,22 +21,24 @@ export default function RegistrationPage() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log("Registration data:", formData)
-    alert("Registration submitted! Check console for data.")
+    alert("✅ Registration submitted! Check console for data.")
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-10 px-5 md:p-10">
         {/* Header */}
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Registration Form</h2>
-          <p className="text-gray-500 text-sm mt-1">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 p-2">
+            Register with Us!
+          </h2>
+          <p className="text-gray-500 text-sm md:text-base mt-2 p-2">
             Join us today and start your journey
           </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5 flex flex-col gap-2">
           {/* Name */}
           <div className="flex flex-col">
             <label htmlFor="name" className="text-gray-700 font-medium mb-1">
@@ -50,7 +52,7 @@ export default function RegistrationPage() {
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             />
           </div>
 
@@ -67,7 +69,7 @@ export default function RegistrationPage() {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             />
           </div>
 
@@ -84,7 +86,7 @@ export default function RegistrationPage() {
               value={formData.password}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             />
           </div>
 
@@ -101,14 +103,14 @@ export default function RegistrationPage() {
               value={formData.linkedinProfile}
               onChange={handleInputChange}
               required
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
             />
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg transition-colors"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl text-lg transition-all shadow-md hover:shadow-lg"
           >
             Submit
           </button>

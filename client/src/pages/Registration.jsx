@@ -6,11 +6,7 @@ const Registration = () => {
 	return (
 		<>
 			<NavBar />
-			<div className="min-h-screen px-6 py-10">
-
-				Registration dashboard
-				<RegistrationPage />
-			</div>
+			<RegistrationPage />
 			<Footer />
 		</>
 	)
