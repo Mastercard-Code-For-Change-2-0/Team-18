@@ -7,7 +7,7 @@ export default function Footer() {
 			<div className="flex flex-col md:flex-row justify-between gap-10">
 				{/* Left Side: Brand Info */}
 				<div className="max-w-md">
-					<h2 className="text-3xl md:text-4xl font-[integralCF] text-night">
+					<h2 className="text-3xl md:text-4xl text-night font-extrabold">
 						Y4D Foundation
 					</h2>
 					<p className="pt-4 text-gray-600 leading-relaxed text-sm md:text-base">

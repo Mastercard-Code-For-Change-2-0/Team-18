@@ -6,7 +6,7 @@ const Admin = () => {
 		<>
 			<NavBar />
 			<div className="min-h-screen px-6 py-10">
-				admin dashboard
+				clerk dashboard
 			</div>
 			<Footer />
 		</>

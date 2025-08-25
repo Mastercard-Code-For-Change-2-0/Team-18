@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Upload, X } from "lucide-react";
 import * as XLSX from "xlsx";
 
-export default function AdminBulkUpload() {
+export default function BulkUpload() {
   const [file, setFile] = useState(null);
   const [students, setStudents] = useState([]);
   const [error, setError] = useState("");
