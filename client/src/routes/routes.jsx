@@ -7,7 +7,7 @@ import AdminDashboard from "../components/AdminDashboard";
 import StudentDetails from "../components/StudentDetails";
 import BulkUpload from "../components/BulkUpload";
 import Clerk from "../pages/Clerk"
-// import Registration from "../pages/Registration";
+import Registration from "../pages/Registration";
 
 
 const router = createBrowserRouter([
@@ -32,10 +32,10 @@ const router = createBrowserRouter([
 		path: "/clerk/bulk-upload",
 		element: <BulkUpload />
 	},
-	// {
-	// 	path: "/register",
-	// 	element: <Registration />
-	// },
+	{
+		path: "/register",
+		element: <Registration />
+	},
 	{
 		path: "/admin-dashboard",
 		element: <AdminDashboard />
