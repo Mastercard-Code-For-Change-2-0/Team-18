@@ -9,6 +9,8 @@ const NavBar = () => {
 				<NavLink name="About Us" />
 				<NavLink name="Contact Us" />
 				<NavLink name="Donate" />
+				<NavLink name="Register" unlock="true" />
+				<NavLink name="Login" unlock="true" />
 			</div>
 		</nav>
 	)
