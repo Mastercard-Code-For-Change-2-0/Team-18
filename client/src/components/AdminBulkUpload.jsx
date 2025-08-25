@@ -1,8 +1,6 @@
-
 import React, { useState } from "react";
 import { Upload, X } from "lucide-react";
 import * as XLSX from "xlsx";
-import "./as.css";
 
 export default function AdminBulkUpload() {
   const [file, setFile] = useState(null);
@@ -30,7 +28,7 @@ export default function AdminBulkUpload() {
     ];
 
     if (!validTypes.includes(uploadedFile.type)) {
-      setError("Invalid file format. Please upload CSV or Excel file.");
+      setError("❌ Invalid file format. Please upload CSV or Excel file.");
       return;
     }
 
@@ -61,20 +59,23 @@ export default function AdminBulkUpload() {
       return;
     }
     console.log("Uploading students:", students);
-    alert("Students uploaded successfully!");
+    alert("✅ Students uploaded successfully!");
     handleClear();
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="bg-white shadow-md rounded-xl p-8 w-full max-w-2xl">
-        <h2 className="text-2xl font-semibold mb-6">Bulk Upload Students</h2>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 px-4">
+      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-3xl border border-gray-200">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+          Bulk Upload Students
+        </h2>
 
         {/* Upload Box */}
         <div
-          className={`border-2 border-dashed rounded-lg p-10 text-center cursor-pointer transition ${
-            dragActive ? "border-blue-500 bg-blue-50" : "border-gray-300"
-          }`}
+          className={`border-2 border-dashed rounded-xl p-10 text-center transition cursor-pointer ${dragActive
+            ? "border-blue-500 bg-blue-50"
+            : "border-gray-300 hover:border-blue-400 hover:bg-blue-50/50"
+            }`}
           onDragOver={(e) => {
             e.preventDefault();
             setDragActive(true);
@@ -82,11 +83,11 @@ export default function AdminBulkUpload() {
           onDragLeave={() => setDragActive(false)}
           onDrop={handleDrop}
         >
-          <Upload className="mx-auto mb-4 text-gray-400" size={40} />
-          <p className="text-gray-600">
+          <Upload className="mx-auto mb-4 text-gray-400" size={50} />
+          <p className="text-gray-600 font-medium">
             Drag & drop your CSV/Excel file here or
           </p>
-          <label className="mt-3 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-blue-600 transition">
+          <label className="mt-4 inline-block bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg cursor-pointer hover:bg-blue-700 transition">
             Browse Files
             <input
               type="file"
@@ -95,20 +96,22 @@ export default function AdminBulkUpload() {
               onChange={handleFileChange}
             />
           </label>
-          <p className="text-xs text-gray-400 mt-3">
-            Supported formats: .csv, .xlsx, .xls
+          <p className="text-xs text-gray-500 mt-3">
+            Supported formats: <span className="font-medium">.csv, .xlsx, .xls</span>
           </p>
         </div>
 
         {/* Error */}
-        {error && <p className="text-red-500 mt-3">{error}</p>}
+        {error && (
+          <p className="text-red-600 font-medium mt-4 text-center">{error}</p>
+        )}
 
         {/* File Info */}
         {file && (
-          <div className="mt-4 flex items-center justify-between bg-gray-100 px-4 py-2 rounded-lg">
-            <span className="text-gray-700 text-sm">{file.name}</span>
+          <div className="mt-5 flex items-center justify-between bg-gray-100 px-4 py-2 rounded-lg shadow-sm">
+            <span className="text-gray-700 text-sm font-medium">{file.name}</span>
             <button
-              className="text-red-500 hover:text-red-700"
+              className="text-red-500 hover:text-red-700 transition"
               onClick={handleClear}
             >
               <X />
@@ -118,16 +121,18 @@ export default function AdminBulkUpload() {
 
         {/* Preview */}
         {students.length > 0 && (
-          <div className="mt-6">
-            <h3 className="font-semibold mb-2">Preview (first 5 rows):</h3>
-            <div className="overflow-x-auto border rounded-lg">
+          <div className="mt-8">
+            <h3 className="font-semibold text-gray-700 mb-3">
+              Preview (first 5 rows):
+            </h3>
+            <div className="overflow-x-auto border rounded-lg shadow-sm">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="bg-gray-100">
+                  <tr className="bg-gray-100 text-gray-700">
                     {Object.keys(students[0]).map((key) => (
                       <th
                         key={key}
-                        className="px-3 py-2 border text-left font-medium text-gray-600"
+                        className="px-4 py-2 border font-semibold text-left"
                       >
                         {key}
                       </th>
@@ -136,12 +141,13 @@ export default function AdminBulkUpload() {
                 </thead>
                 <tbody>
                   {students.slice(0, 5).map((row, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
+                    <tr
+                      key={index}
+                      className={`${index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                        } hover:bg-blue-50 transition`}
+                    >
                       {Object.values(row).map((val, i) => (
-                        <td
-                          key={i}
-                          className="px-3 py-2 border text-gray-700"
-                        >
+                        <td key={i} className="px-4 py-2 border text-gray-700">
                           {val}
                         </td>
                       ))}
@@ -154,16 +160,16 @@ export default function AdminBulkUpload() {
         )}
 
         {/* Buttons */}
-        <div className="mt-6 flex gap-10">
+        <div className="mt-8 flex justify-center gap-6">
           <button
-            className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 disabled:opacity-50"
+            className="bg-blue-600 text-white font-semibold px-6 py-2.5 rounded-lg shadow hover:bg-blue-700 disabled:opacity-50 transition"
             onClick={handleUpload}
             disabled={!file}
           >
             Upload File
           </button>
           <button
-            className="bg-gray-200 px-5 py-2 rounded-lg hover:bg-gray-300 disabled:opacity-50"
+            className="bg-gray-200 font-medium px-6 py-2.5 rounded-lg shadow hover:bg-gray-300 disabled:opacity-50 transition"
             onClick={handleClear}
             disabled={!file}
           >
